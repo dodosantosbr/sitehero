@@ -25,12 +25,12 @@
     $username = preg_replace('/[^a-zA-Z0-9]/', '', $username);
 
     if (strlen($username) >= 12) {
-        echo "<div class='error'>Username can only be maximum of 12 minimum of 1 characters</div>";
+        echo "<div class='error'>O nome de usuário só pode ter no máximo 12 caracteres no mínimo 1</div>";
         die();
     }
 
     if (strlen($password) < 6) {
-		echo "<div class='error'>Password must be at least 6 characters</div>";
+		echo "<div class='error'>A senha deve ter pelo menos 6 caracteres</div>";
         die();
     }
 
@@ -40,7 +40,7 @@
     $check_existing->execute(array(':username' => $username));
 
     if ($check_existing->rowCount() > 0) {
-        echo "<div class='error'>$username already exists</div>";
+        echo "<div class='error'>$username já existe</div>";
         die();
     }
 
@@ -59,6 +59,6 @@
     ));
 
     if ($insert_user) {
-        echo "<div class='success'>$username is successfully registered!</div>";
+        echo "<div class='success'>$username foi registrado com sucesso!</div>";
     }
 ?>
