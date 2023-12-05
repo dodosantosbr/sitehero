@@ -3,9 +3,10 @@
     $dbname = "postgres";
     $username = "postgres";
     $password = "adm99";
+    $port = "5432"
 
     try {
-        $conn = new PDO("pgsql:host=$host;dbname=$dbname", $username, $password);
+        $conn = new PDO("pgsql:host=$host;dbname=$dbname", $username, $password, $port);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch(PDOException $e) {
         echo "Error : " . $e->getMessage();
