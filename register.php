@@ -1,9 +1,9 @@
 <?php
-    $host = "127.0.0.1";
+    $host = "localhost";
     $dbname = "postgres";
     $username = "postgres";
     $password = "adm99";
-    $port = "5432"
+    $port = "4520"
 
     try {
         $conn = new PDO("pgsql:host=$host;dbname=$dbname", $username, $password, $port);
@@ -45,15 +45,17 @@
         die();
     }
 
-    $query = "INSERT INTO hops.account (user_name, password, user_type, server, ncash, bank_gold, created_at, disabled_until, checkin_counter) VALUES (:username, :password, :user_type, :server, :ncash, :bank_gold, :created_at, :disabled_until, :checkin_counter)";
+    $query = "INSERT INTO hops.account (user_name, password, user_type, server, ncash, bank_gold, created_at, disabled_until, checkin_counter) VALUES (:username, :password, :user_type, :ip, :server, :ncash, :bank_gold, :mail, :created_at, :disabled_until, :checkin_counter)";
     $insert_user = $conn->prepare($query);
     $insert_user->execute(array(
         ':username' => $username,
         ':password' => $password,
         ':user_type' => $user_type,
+	':ip' => $ip,
         ':server' => $server,
         ':ncash' => $ncash,
         ':bank_gold' => $bank_gold,
+	':mail' => $mail
         ':created_at' => $created_at,
         ':disabled_until' => $disabled_until,
         ':checkin_counter' => $checkin_counter
